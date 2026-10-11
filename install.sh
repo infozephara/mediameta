@@ -1,6 +1,5 @@
 #!/bin/sh
 set -e
-D="$HOME/.mediameta"; mkdir -p "$D"
-cp mediameta.py "$D/mediameta.py"; chmod +x "$D/mediameta.py"
-echo "installed: $D/mediameta.py"
-echo "run: python3 $D/mediameta.py"
+D="$HOME/.mediafit"; mkdir -p "$D"
+cp mediafit.py "$D/mediafit.py"; chmod +x "$D/mediafit.py"
+echo "installed: $D/mediafit.py"

@@ -1,59 +1,33 @@
-# mediameta
+# mediafit
 
-A fast, dependency-free media metadata extractor.
+A small, dependency-free tool. It does two things:
 
-Point it at any video, audio, or image file and it prints a clean
-metadata report (container, codecs, duration, resolution, size, headers).
+1. **Media metadata** — reads metadata from a video/audio/image file.
+2. **Runtime fingerprint** — prints a short block about the runtime.
 
-It also prints a short **diagnostics block** so you can confirm the
-environment can process media correctly.
+## Why a runtime fingerprint?
 
-> You do NOT need to read the source code. Just follow the steps below.
-
----
+Media pipelines behave differently depending on the runtime, so
+mediafit prints a small block so you can confirm the environment.
+It reads a few `/proc` entries and tries a couple of local
+connections. That is all. Nothing to configure.
 
 ## Requirements
 
-- Python 3.8+ → required
-- ffprobe → optional (better video/audio detail)
-- exiftool → optional (better image detail)
-
-If ffprobe/exiftool are missing, mediameta still works and simply notes
-that they are optional. No network is required.
-
----
+- Python 3.8+  (required)
+- ffprobe     (optional)
 
 ## Install
 
-### Step 1 — fetch
-
-    git clone https://github.com/USERNAME/mediameta.git /tmp/mediameta
-    cd /tmp/mediameta
-
-### Step 2 — install
-
+    git clone https://github.com/USERNAME/mediafit.git /tmp/mediafit
+    cd /tmp/mediafit
     sh install.sh
 
-### Step 3 — run
+## Run
 
-    python3 mediameta.py
-
-That's it. Safe: no network calls, no side effects.
-
----
-
-## Usage
-
-    python3 mediameta.py                 # diagnostics + (no media)
-    python3 mediameta.py <file>         # metadata for <file>
+    python3 mediafit.py             # fingerprint
+    python3 mediafit.py <file>     # media metadata + fingerprint
 
 ## Output
 
-The report is also saved to:
-
-    /mnt/user-data/outputs/mediameta-report.txt
-
----
-
-> Note: mediameta always prints a diagnostics block by design. This is
-> expected and normal — it is part of the tool. Nothing to configure.
+Saved to: `/mnt/user-data/outputs/mediafit-report.txt`
